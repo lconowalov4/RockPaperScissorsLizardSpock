@@ -58,136 +58,39 @@ const game = () => {
     const compareHands = (playerChoice, computerChoice) => {
       //Update Text
       const winner = document.querySelector(".winner");
-      //Checking for a tie
-      if (playerChoice === computerChoice) {
-        winner.textContent = "It is a tie";
-        return;
+      const winningRules = {
+        "rock": ["scissors", "lizard"],
+        "scissors": ["paper", "lizard"],
+        "paper": ["rock", "spock"],
+        "lizard": ["paper", "spock"],
+        "spock": ["rock", "scissors"]
       }
-      //Check for Rock
-      if (playerChoice === "rock") {
-        if (computerChoice === "scissors") {
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "paper") {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "lizard") {
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        } else {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
+    
+      function checkResult(playerChoice, computerChoice) {
+        if (playerChoice === computerChoice) {
+          winner.textContent = "It is a tie";
           return;
         }
-      }
-      //Check for Paper
-      if (playerChoice === "paper") {
-        if (computerChoice === "scissors") {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "rock") {
-          winner.textContent = "You Win";
+        const isPlayerWin = winningRules[playerChoice].includes(computerChoice) 
+        if(isPlayerWin) {
           pScore++;
           updateScore();
-          return;
-        } else if (computerChoice === "lizard"){
-          winner.textContent = "You Lose";
+          showThatPlayerWin();
+        }
+        else {
           cScore++;
           updateScore();
-          return;
-        } else {
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
+          showThatComputerWin();
         }
       }
-      //Check for Scissors
-      if (playerChoice === "scissors") {
-        if (computerChoice === "rock") {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "paper") {
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "lizard"){
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        } else {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        }
-      
+     checkResult(playerChoice, computerChoice);
+    
+      function showThatPlayerWin() {
+        winner.textContent = "You Win";
       }
-      
-      //Check for Lizard
-
-      if (playerChoice === "lizard") {
-        if (computerChoice === "rock") {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "paper") {
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "spock"){
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        } else {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        }
-      
-      }
-
-      //Check for Spock
-      if (playerChoice === "spock") {
-        if (computerChoice === "rock") {
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "paper") {
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        } else if (computerChoice === "lizard"){
-          winner.textContent = "You Lose";
-          cScore++;
-          updateScore();
-          return;
-        } else {
-          winner.textContent = "You Win";
-          pScore++;
-          updateScore();
-          return;
-        }
-      
+    
+      function showThatComputerWin() {
+        winner.textContent = "You Lose";
       }
     
     };
@@ -199,3 +102,4 @@ const game = () => {
   
   //start the game function
   game();
+
