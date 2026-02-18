@@ -1,4 +1,4 @@
-Inspired by the TV series The Big Bang Theory, I decided to create a browser game for practicing the JavaScript programming language, as well as for practicing HTML and CSS.
+Inspired by the TV series The Big Bang Theory, I decided to create a browser game for practicing the JavaScript, as well as for practicing HTML and CSS.
 
 To run the project, open the index.html file in any browser.
 
